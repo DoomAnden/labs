@@ -3,17 +3,18 @@ def number_to_words(n):
          6: 'шесть', 7: 'семь', 8: 'восемь', 9: 'девять'}
     return f.get(n)
 
-from random import randint
+lines = []
+with open('digit.txt') as f:
+    file = f.read()
+    for i in file.split():
+        lines.append(i)
+print(lines)
 
-numbers = []
-for i in range(20):
-    numbers.append(randint(1, 20))
-print(numbers)
-a = numbers[1::2]
+a = lines[1::2]
 print(a)
 for j in a:
     answer =  str(j) + " - "
     for i in str(j):
-        if int(i) %2 != 0:
+        if   i.isdigit() == True and int(i) %2 != 0:
             answer += number_to_words(int(i)) + " "
     print(answer)
